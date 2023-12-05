@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="fragments/header.html :: header(${pageTitle})">
+<body>
+<header th:replace="fragments/head.html :: head()">
+</header>
+<section class="hero">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-3">
+                <div class="hero__categories">
+                    <div class="hero__categories__all">
+                        <i class="fa fa-bars"></i>
+                        <span>Tất cả thể loại</span>
+                    </div>
+                    <ul id="productTableBody">
+
+                    </ul>
+
+                </div>
+            </div>
+            <div class="col-lg-9">
+                <div class="hero__search">
+                    <div class="hero__search__form">
+                        <form th:action="@{/products}">
+                            <input  name="keyword" type="text" th:value="${keyword}" placeholder="Bạn cần tìm gì?" required>
+                            <button type="submit" class="site-btn">Tìm kiếm</button>
+                        </form>
+                    </div>
+                    <div class="hero__search__phone">
+                        <div class="hero__search__phone__icon">
+                            <i class="fa fa-phone"></i>
+                        </div>
+                        <div class="hero__search__phone__text">
+                            <h5>+8491228445</h5>
+                            <span>Hỗ trợ 24/7 </span>
+                        </div>
+                    </div>
+                </div>
+                <div class="hero__item set-bg" th:data-setbg="@{/img/hero/banner.jpg}" th:style="'background-image: url(\'' + @{/img/hero/banner.jpg} + '\');'">
+                    <div class="hero__text">
+                        <span>Black Friday 2023 sắp trở lại</span>
+                        <h3>Chính sách đổi trả <br> bảo hành tốt nhất</h3>
+                        <p>Nhận và giao hàng miễn phí</p>
+                        <a href="#" class="primary-btn">MUA NGAY</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="product-details spad" th:object="${product}">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6 col-md-6" >
+                <div class="product__details__pic">
+                    <div class="product__details__pic__item">
+                        <img class="product__details__pic__item--large" th:src="*{image}"  alt="">
+                    </div>
+                    <div class="product__details__pic__slider owl-carousel owl-loaded owl-drag">
+                        <div class="owl-stage-outer"><div class="owl-stage" style="transform: translate3d(-795px, 0px, 0px); transition: all 0s ease 0s; width: 1590px;"><div class="owl-item cloned" style="width: 112.5px; margin-right: 20px;"><img data-imgbigurl="img/product/details/product-details-2.jpg" src="img/product/details/thumb-1.jpg" alt=""></div><div class="owl-item cloned" style="width: 112.5px; margin-right: 20px;"><img data-imgbigurl="img/product/details/product-details-3.jpg" src="img/product/details/thumb-2.jpg" alt=""></div><div class="owl-item cloned" style="width: 112.5px; margin-right: 20px;"><img data-imgbigurl="img/product/details/product-details-5.jpg" src="img/product/details/thumb-3.jpg" alt=""></div><div class="owl-item cloned" style="width: 112.5px; margin-right: 20px;"><img data-imgbigurl="img/product/details/product-details-4.jpg" src="img/product/details/thumb-4.jpg" alt=""></div><div class="owl-item" style="width: 112.5px; margin-right: 20px;"><img data-imgbigurl="img/product/details/product-details-2.jpg" src="img/product/details/thumb-1.jpg" alt=""></div><div class="owl-item" style="width: 112.5px; margin-right: 20px;"><img data-imgbigurl="img/product/details/product-details-3.jpg" src="img/product/details/thumb-2.jpg" alt=""></div><div class="owl-item active" style="width: 112.5px; margin-right: 20px;"><img data-imgbigurl="img/product/details/product-details-5.jpg" src="img/product/details/thumb-3.jpg" alt=""></div><div class="owl-item active" style="width: 112.5px; margin-right: 20px;"><img data-imgbigurl="img/product/details/product-details-4.jpg" src="img/product/details/thumb-4.jpg" alt=""></div><div class="owl-item cloned active" style="width: 112.5px; margin-right: 20px;"><img data-imgbigurl="img/product/details/product-details-2.jpg" src="img/product/details/thumb-1.jpg" alt=""></div><div class="owl-item cloned active" style="width: 112.5px; margin-right: 20px;"><img data-imgbigurl="img/product/details/product-details-3.jpg" src="img/product/details/thumb-2.jpg" alt=""></div><div class="owl-item cloned" style="width: 112.5px; margin-right: 20px;"><img data-imgbigurl="img/product/details/product-details-5.jpg" src="img/product/details/thumb-3.jpg" alt=""></div><div class="owl-item cloned" style="width: 112.5px; margin-right: 20px;"><img data-imgbigurl="img/product/details/product-details-4.jpg" src="img/product/details/thumb-4.jpg" alt=""></div></div></div><div class="owl-nav disabled"><button type="button" role="presentation" class="owl-prev"><span aria-label="Previous">‹</span></button><button type="button" role="presentation" class="owl-next"><span aria-label="Next">›</span></button></div><div class="owl-dots disabled"><button role="button" class="owl-dot active"><span></span></button></div></div>
+                </div>
+            </div>
+            <div class="col-lg-6 col-md-6">
+                <div class="product__details__text">
+                    <h3 th:text="*{name}"></h3>
+                    <div class="product__details__rating">
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star-half-o"></i>
+                        <span id="random-number"></span>
+                    </div>
+                    <div id="price_details" class="product__details__price">[[*{price}]] VND</div>
+                    <p th:text="*{description}"></p>
+                    <!-- add to cart -->
+                    <form th:action="@{/cart/add}" th:object="${cartItem}" method="post">
+                        <div class="form-group">
+                            <div class="product__details__quantity">
+                                <div class="quantity">
+                                    <div class="pro-qty">
+                                        <input type="number" id="quantity" name="quantity" min="1"
+                                               value="1" >
+                                    </div>
+                                </div>
+                            </div>
+
+                            <input type="hidden" name="productId" th:value="${product.id}" />
+                            <input type="hidden" name="productPrice" th:value="${product.price}" />
+<!--                            <input style="width: 80px" class="form-control" type="number" id="quantity" name="quantity" min="1"-->
+<!--                                   value="1" />-->
+                            <button type="submit" class="btn-lg text-white" style="border-color: #007bff; background-color: #007bff;">
+                                THÊM VÀO GIỎ HÀNG
+                            </button>
+                        </div>
+                    </form>
+                    <ul>
+                        <li><b>Loại sản phẩm</b> <span>[[*{category}]]</span></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-lg-12">
+                <div class="product__details__tab">
+                    <ul class="nav nav-tabs" role="tablist">
+                        <li class="nav-item">
+                            <h1><a class="nav-link active" data-toggle="tab" href="#tabs-1" role="tab" aria-selected="true">Mô tả</a></h1>
+                        </li>
+                    </ul>
+                    <div class="tab-content">
+                        <div class="tab-pane active" id="tabs-1" role="tabpanel">
+                            <div class="product__details__tab__desc">
+                                <h6>Thông tin sản phẩm</h6>
+                                <p th:text="*{description}"></p>
+                                <div id="fb-root"></div>
+                                <script async defer crossorigin="anonymous" src="https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v18.0&appId=1147006355663980" nonce="NseDYCYg"></script>
+                                <div class="fb-comments" data-href="https://developers.facebook.com/docs/plugins/comments#configurator" data-width="100%" data-numposts="5"></div>
+                            </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<!-- row filter -->
+<!--<div class="container mb-4">-->
+<!--  <div class="row gap-2">-->
+<!--    <div class="col btn btn-lg btn-primary">-->
+<!--      <th th:replace="fragments/filter :: filter('category','Category')"> </th>-->
+<!--    </div>-->
+<!--    <div class="col btn btn-lg btn-primary">-->
+<!--      <th th:replace="fragments/filter :: filter('name','Name')"> </th>-->
+<!--    </div>-->
+<!--    <div class="col btn btn-lg btn-primary">-->
+<!--      <th th:replace="fragments/filter :: filter('price','Price')"> </th>-->
+<!--    </div>-->
+<!--    <div class="col btn btn-lg btn-primary">-->
+<!--      <th th:replace="fragments/filter :: filter('brand','Brand')"> </th>-->
+<!--    </div>-->
+<!--    <div class="col btn btn-lg btn-primary">-->
+<!--      <th th:replace="fragments/filter :: filter('color','Color')"> </th>-->
+<!--    </div>-->
+<!--  </div>-->
+<!--</div>-->
+
+<!-- Table for admin -->
+
+    <!-- footer -->
+    <footer th:replace="fragments/footer.html :: footer()">
+    </footer>
+</div>
+
+<!-- script -->
+<script type="text/javascript">
+    function clearSearch() {
+        window.location = "[[@{/products}]]";
+    }
+</script>
+<script>
+    $(document).ready(function() {
+        $.getJSON("/api/category", function(products) {
+            var tableBody = $("#productTableBody");
+            var uniqueCategories = [];
+
+            $.each(products, function(index, product) {
+                var category = product.category;
+                if (!uniqueCategories.includes(category)) {
+                    uniqueCategories.push(category);
+                    var row = "<li><a>" + category + "</a></li>";
+                    tableBody.append(row);
+                }
+            });
+        });
+    });
+</script>
+
+<script>
+    function getRandomNumber(min, max) {
+        var randomDecimal = Math.random();
+        var randomNumber = Math.floor(randomDecimal * (max - min)) + min;
+        return randomNumber;
+    }
+
+    function displayRandomNumber() {
+        var min = 1;
+        var max = 10000;
+        var randomNum = getRandomNumber(min, max);
+        document.getElementById("random-number").textContent = "("+randomNum+" lượt xem)";
+    }
+    displayRandomNumber();
+</script>
+<script>
+    var priceElements = document.querySelectorAll("#price_details");
+
+    priceElements.forEach(function(priceElement) {
+        var priceText = priceElement.innerText;
+        var priceNumber = parseFloat(priceText);
+
+        if (!isNaN(priceNumber)) {
+            var formattedPrice = new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(priceNumber);
+            priceElement.innerText = formattedPrice;
+        }
+    });
+</script>
+
+
+</body>
+
+</html>

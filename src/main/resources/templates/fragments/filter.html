@@ -1,0 +1,16 @@
+        <li th:fragment="filter(field, label)" th:if="${sortField == field}"  th:class="${sortDirection == 'asc' ? 'active' : 'atives'}">
+            <a style="color: black; padding-right: 5px;" class="active"
+               th:href="@{'/products?' + ${keyword!=null && keyword!=''? 'keyword=' + keyword + '&' : ''}
+                + 'page=' + ${currentPage} + '&size=' + ${pageSize}
+                + ${sortField!=null ? '&sort=' + field + ',' + (sortField == field ? reverseSortDirection : sortDirection) : ''}}">
+                [[${label}]] </a>
+        </li>
+        <li th:fragment="filter(field, label)" th:if="${sortField != field}" >
+            <a style="color: black; padding-right: 5px;" class="active"
+               th:href="@{'/products?' + ${keyword!=null && keyword!=''? 'keyword=' + keyword + '&' : ''}
+                + 'page=' + ${currentPage} + '&size=' + ${pageSize}
+                + ${sortField!=null ? '&sort=' + field + ',' + (sortField == field ? reverseSortDirection : sortDirection) : ''}}">
+                [[${label}]] </a>
+        </li>
+
+
